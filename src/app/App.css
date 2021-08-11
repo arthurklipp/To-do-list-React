@@ -1,0 +1,98 @@
+.app{
+    display: flex;
+    flex-direction: column;
+    background-color: rgb(0, 0, 150);
+    border: 1px solid rgb(255, 255, 255);
+    border-radius: 5px;
+    min-width: 400px;
+    min-height: 200px;
+    width: 30vw;
+    max-height: 80%;
+    margin-top: 100px;
+}
+
+span{
+    color: white;
+    font-size: 30px;
+}
+
+.header{
+    display: flex;
+    justify-content: center;
+    height: 40px;
+    border-bottom: 1px solid white;
+    margin-left: 10%;
+    margin-right: 10%;
+}
+
+.todoList{
+    overflow: auto;
+    height: 100%;
+}
+
+.riscado{
+    text-decoration: line-through;
+    text-decoration-color: black;
+    text-decoration-thickness: 3px;
+}
+
+.item{
+    height: 50px;
+    display: flex;
+    margin-left: 10%;
+    margin-right: 10%;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    padding-left: 30px;
+    border-radius: 5px;
+    align-items: center;
+    background-color: rgb(0, 0, 200);
+}
+
+.item:hover{
+    padding-left: 10px;
+}
+.item:hover div{
+    display: block;
+}
+
+form{
+    display: flex;
+    height: 50px;
+    margin-left: 10%;
+    margin-right: 10%;
+    margin-top: auto;
+    align-items: center;
+    margin-bottom: 10px;
+}
+
+input{
+    border: none;
+    border-radius: 5px;
+    margin-left: auto;
+    width: 250px;
+    height: 35px;
+    background-color: white;
+}
+
+button{
+    margin-left: auto;
+    margin-right: auto;
+    border: none;
+    border-radius: 5px;
+    width: 100px;
+    height: 35px;
+    background-color: white;
+}
+
+.remove{
+ cursor: pointer;
+ width: 35px;
+ display: none;
+ font-size: 30px;
+ color: red;
+}
+
+.task{
+    width: 100%;
+}
