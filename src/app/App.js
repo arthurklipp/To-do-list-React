@@ -7,6 +7,7 @@ class App extends React.Component {
     this.handleChange = this.handleChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
     this.removeTask = this.removeTask.bind(this);
+    this.handleTask = this.handleTask.bind(this);
     this.state = {
       tasks: [],
       text: ''
@@ -23,6 +24,16 @@ class App extends React.Component {
     });
   }
 
+  handleTask(e) {
+    let tasks = this.state.tasks;
+
+    tasks[e.target.id].completed = !tasks[e.target.id].completed;
+    
+    this.setState({
+      tasks: tasks
+    });
+  }
+
   handleChange(e) {
     this.setState({ text: e.target.value });
   }
@@ -35,7 +46,8 @@ class App extends React.Component {
     }
 
     const newTask = {
-      text: this.state.text
+      text: this.state.text,
+      completed: false
     };
 
     this.setState({
@@ -46,7 +58,7 @@ class App extends React.Component {
 
   render() {
 
-    let todos = this.state.tasks.map((task, index) => <Todo removeTask={this.removeTask} key={index.toString()} id={index} value={task.text} />)
+    let todos = this.state.tasks.map((task, index) => <Todo removeTask={this.removeTask} handleTask={this.handleTask} key={index.toString()} id={index} value={task.text} completed={task.completed}/>)
 
     return (
       <div className="app">
@@ -74,38 +86,22 @@ function Header(props) {
     </div>)
 }
 
-class Todo extends React.Component {
-  constructor(props) {
-    super(props);
-    this.handleTask = this.handleTask.bind(this);
-    this.state = {
-      completed: false
-    };
-  }
-
-  handleTask() {
-    this.setState({
-      completed: !this.state.completed
-    });
-  }
-
-  render() {
+function Todo(props){
     let task;
     
-    if (!this.state.completed) {
-      task = <span>{this.props.value}</span>;
+    if (!props.completed) {
+      task = <span>{props.value}</span>;
     } else {
-      task = <span className="riscado">{this.props.value}</span>;
+      task = <span className="riscado">{props.value}</span>;
     }
     return (
       <div className="item">
-        <div className="remove" onClick={this.props.removeTask} id={this.props.id}>
+        <div className="remove" onClick={props.removeTask} id={props.id}>
           ✖
         </div>
-        <div className="task" onClick={this.handleTask}>
+        <div className="task" onClick={props.handleTask} id={props.id}>
           {task}
         </div>
       </div>
     )
-  }
 }
